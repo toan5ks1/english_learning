@@ -1,6 +1,6 @@
 import { StarIcon, ArrowLeftIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Photo } from "@/app/features/product/components/photo";
+import { Photo } from "@/features/product/components/photo";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 import { SearchParams, stringifySearchParams } from "@/lib/url-state";

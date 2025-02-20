@@ -1,10 +1,3 @@
-export interface Card {
-  id: string;
-  title: string;
-  description?: string;
-  image_url: string;
-}
-
 export interface NavItem {
   title: string;
   url: string;

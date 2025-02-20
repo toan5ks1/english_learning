@@ -1,29 +1,18 @@
 import { NextResponse } from "next/server";
+import fs from "fs/promises";
+import path from "path";
 
 export async function GET() {
-  const products = [
-    {
-      id: 1,
-      title: "The Great Gatsby",
-      description: "A novel written by American author F. Scott Fitzgerald.",
-      genre: "Fiction",
-      imageUrl: "https://example.com/gatsby.jpg",
-    },
-    {
-      id: 2,
-      title: "To Kill a Mockingbird",
-      description: "A novel by Harper Lee published in 1960.",
-      genre: "Classic",
-      imageUrl: "https://example.com/mockingbird.jpg",
-    },
-    {
-      id: 3,
-      title: "1984",
-      description: "A dystopian social science fiction novel by George Orwell.",
-      genre: "Dystopian",
-      imageUrl: "https://example.com/1984.jpg",
-    },
-  ];
+  const filePath = path.join(process.cwd(), "db", "db.json");
 
-  return NextResponse.json(products, { status: 200 });
+  try {
+    const fileData = await fs.readFile(filePath, "utf-8"); // Read file asynchronously
+    const jsonData = JSON.parse(fileData); // Parse JSON data
+
+    // console.log(jsonData);
+
+    return NextResponse.json(jsonData, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to load data" }, { status: 500 });
+  }
 }

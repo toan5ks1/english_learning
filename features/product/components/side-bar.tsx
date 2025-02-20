@@ -1,6 +1,6 @@
 "use client";
 
-import { ResetFilter } from "@/app/features/product/components/filters/clear-filter";
+import { ResetFilter } from "@/features/product/components/filters/clear-filter";
 import { useSearchTable } from "@/hooks/use-search-table";
 import {
   Sidebar,
@@ -30,8 +30,8 @@ export function SideBar() {
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
 
   return (
-    <Sidebar>
-      <SidebarContent className="px-2 py-4">
+    <Sidebar className="sticky top-0">
+      <SidebarContent className="px-4 py-6">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-4">

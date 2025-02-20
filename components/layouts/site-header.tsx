@@ -6,7 +6,7 @@ import { navItems } from "@/lib/const";
 
 export function SiteHeader() {
   return (
-    <header className="border-grid sticky top-0 z-50 w-full border-b bg-background/95 px-6 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="border-grid sticky top-0 w-full border-b bg-background/95 px-6 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-14 justify-between">
         <MainNav items={navItems} />
         <MobileNav items={navItems} />
