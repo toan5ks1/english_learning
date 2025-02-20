@@ -1,3 +1,4 @@
+import { ICategory, ITheme, ITier } from "@/db/model";
 import { NavItemWithChildren } from "./types";
 
 export const ITEMS_PER_PAGE = 28;
@@ -32,3 +33,19 @@ export const navItems: NavItemWithChildren[] = [
     items: [], // No child items
   },
 ];
+
+export const CATEGORY: ICategory[] = [
+  "Upper Body",
+  "Lower Body",
+  "Hat",
+  "Shoes",
+  "Accessory",
+  "Legendary",
+  "Mythic",
+  "Epic",
+  "Rare",
+];
+
+export const TIER: ITier[] = ["Basic", "Premium", "Deluxe"];
+
+export const THEME: ITheme[] = ["Dark", "Light", "Colorful", "Halloween"];

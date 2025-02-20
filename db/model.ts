@@ -20,6 +20,10 @@ export interface IProduct {
   author: IAuthor;
 }
 
+export type ICategory = IProduct["category"];
+export type ITier = IProduct["tier"];
+export type ITheme = IProduct["theme"];
+
 export interface IAuthor {
   firstName: string;
   lastName: string;

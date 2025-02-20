@@ -22,16 +22,10 @@ import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { CheckIcon } from "lucide-react";
 import React from "react";
 
-interface FilterOption {
-  value: string;
-  label: string;
-  icon?: React.ComponentType<{ className?: string }>;
-}
-
 interface FilterBoxProps {
   filterKey: string;
   filterLabel: string;
-  options: FilterOption[];
+  options: string[];
   filterValues: Record<string, string | string[] | null>;
   setFilterValues: (updater: Record<string, string | string[] | null>) => void;
 }
@@ -70,7 +64,7 @@ export function FilterBox<T>({
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="border-dashed">
+        <Button variant="outline" className="border-dashed justify-start">
           <PlusCircledIcon className="mr-2 h-4 w-4" />
           {filterLabel}
           {selectedValuesSet.size > 0 && (
@@ -97,8 +91,7 @@ export function FilterBox<T>({
                       key={value}
                       className="rounded-sm px-1 font-normal"
                     >
-                      {options.find((option) => option.value === value)
-                        ?.label || value}
+                      {options.find((option) => option === value) || value}
                     </Badge>
                   ))
                 )}
@@ -114,27 +107,18 @@ export function FilterBox<T>({
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
               {options.map((option) => (
-                <CommandItem
-                  key={option.value}
-                  onSelect={() => handleSelect(option.value)}
-                >
+                <CommandItem key={option} onSelect={() => handleSelect(option)}>
                   <div
                     className={cn(
                       "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
-                      selectedValuesSet.has(option.value)
+                      selectedValuesSet.has(option)
                         ? "bg-primary text-primary-foreground"
                         : "opacity-50 [&_svg]:invisible"
                     )}
                   >
                     <CheckIcon className="h-4 w-4" aria-hidden="true" />
                   </div>
-                  {option.icon && (
-                    <option.icon
-                      className="mr-2 h-4 w-4 text-muted-foreground"
-                      aria-hidden="true"
-                    />
-                  )}
-                  <span>{option.label}</span>
+                  <span>{option}</span>
                 </CommandItem>
               ))}
             </CommandGroup>

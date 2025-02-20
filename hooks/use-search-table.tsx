@@ -2,16 +2,10 @@ import React from "react";
 import { useQueryStates } from "nuqs"; // Assuming nuqs provides this
 import { parseAsString, parseAsArrayOf, Parser } from "nuqs/server";
 
-type Option = {
-  label: string;
-  id: number;
-  icon?: any;
-};
-
 type Field = {
   id: string;
   label?: string;
-  options?: Option[];
+  options?: string[];
 };
 
 type UseSearchTableProps = {
