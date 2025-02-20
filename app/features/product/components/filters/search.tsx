@@ -38,7 +38,7 @@ export function SearchProduct({
         setInputValue(input);
         debouncedSetFilterValues({ [searchKey]: input });
       }}
-      className="w-full md:max-w-60"
+      className="w-full md:max-w-80"
     />
   );
 }
