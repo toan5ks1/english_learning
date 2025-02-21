@@ -5,6 +5,7 @@ import { parseSearchParams } from "@/lib/url-state";
 import { ITEMS_PER_PAGE } from "@/lib/const";
 import { API_URL } from "@/config/site";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 async function fetchProducts() {
   const res = await fetch(`${API_URL}/api/products`); // Use absolute URL
@@ -25,11 +26,15 @@ export default async function Page(props: {
   // const currentPage = Math.max(1, Number(parsedSearchParams.page) || 1);
 
   return (
-    <div className="z-10 h-full px-4 py-6 space-y-4 bg-background">
-      <div className="rounded-md sticky z-20 top-0 h-12 bg-slate-200">
-        category
+    <div className="w-full bg-background">
+      <div className="bg-background sticky z-50 top-0 px-4 py-2">
+        <div className="rounded-lg h-12 bg-slate-200">
+          <SidebarTrigger className="lg:hidden block" />
+        </div>
       </div>
-      <CardsGrid products={products.products.slice(0, 20)} />
+      <div className="p-4 pb-6">
+        <CardsGrid products={products.products.slice(0, 20)} />
+      </div>
     </div>
   );
 }
