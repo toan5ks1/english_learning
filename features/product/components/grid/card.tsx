@@ -12,7 +12,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="max-w-[100px] group relative space-y-4 overflow-hidden">
+    <Card className="group relative space-y-4 overflow-hidden">
       <figure className="group-hover:opacity-90">
         <Button
           variant="ghost"
