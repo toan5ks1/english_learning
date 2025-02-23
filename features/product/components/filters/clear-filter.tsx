@@ -6,7 +6,9 @@ export function ResetFilter({ isFilterActive }: { isFilterActive: boolean }) {
   const pathname = usePathname();
 
   const onReset = () => {
-    router.push(pathname);
+    router.push(pathname, {
+      scroll: false,
+    });
   };
 
   return (
