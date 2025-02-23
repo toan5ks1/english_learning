@@ -18,3 +18,31 @@ export function getImageUrlById(id: number) {
   const index = (id - 1) % imageUrls.length;
   return imageUrls[index];
 }
+
+// export const getGradientByRarity = (rarity: string) => {
+//   const gradients: Record<string, string> = {
+//     Epic: "bg-gradient-to-br from-purple-500 to-blue-500",
+//     Legendary: "bg-gradient-to-br from-orange-500 to-yellow-500",
+//     Mythic: "bg-gradient-to-br from-pink-500 to-red-500",
+//     Common: "bg-gradient-to-br from-green-400 to-teal-500",
+//     Rare: "bg-gradient-to-br from-blue-400 to-indigo-500",
+//   };
+
+//   return gradients[rarity] || "bg-gradient-to-br from-gray-500 to-gray-700";
+// };
+export const getGradientByRarity = (category: string) => {
+  const gradients: Record<string, string> = {
+    "Upper Body": "linear-gradient(to bottom right, #ff9a9e, #fad0c4)", // Soft Pink to Peach
+    "Lower Body": "linear-gradient(to bottom right, #a18cd1, #fbc2eb)", // Purple to Pink
+    Hat: "linear-gradient(to bottom right, #fbc2eb, #a6c1ee)", // Pink to Light Blue
+    Shoes: "linear-gradient(to bottom right, #ffdde1, #ee9ca7)", // Light Pink to Rose
+    Common: "linear-gradient(90.13deg, #49DD81 0%, #22B4C6 100%)", // Green to Teal
+    Accessory: "linear-gradient(to bottom right, #74ebd5, #acb6e5)", // Cyan to Blue Gray
+    Legendary: "linear-gradient(90.13deg, #FE955A 0%, #F1DA63 100%)", // Orange to Yellow
+    Mythic: "linear-gradient(90.13deg, #FE5A5A 0%, #F163D2 100%)",
+    Epic: "linear-gradient(90.13deg, #DD5AFE 0%, #6366F1 100%)",
+    Rare: "linear-gradient(90deg, #43A6F6 0%, #5868F3 100%)",
+  };
+
+  return gradients[category] || "linear-gradient(to bottom right, #555, #333)"; // Default Gray
+};
