@@ -4,8 +4,9 @@ import { ProductPagination } from "@/features/product/components/grid/pagination
 import { parseSearchParams } from "@/lib/url-state";
 import { ITEMS_PER_PAGE } from "@/lib/const";
 import { API_URL } from "@/config/site";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { ProductCategory } from "@/features/product/components/filters/category";
+import { Button } from "@/components/ui/button";
 
 async function fetchProducts() {
   const res = await fetch(`${API_URL}/api/products`); // Use absolute URL
@@ -28,12 +29,19 @@ export default async function Page(props: {
   return (
     <div className="w-full bg-background">
       <div className="bg-background sticky z-50 top-0 px-4 py-2">
-        <div className="rounded-lg h-12 bg-slate-200">
-          <SidebarTrigger className="lg:hidden block" />
+        <div className="h-12 flex items-center">
+          <SidebarTrigger
+            className="lg:hidden block size-9 px-1 mr-2"
+            variant={"secondary"}
+          />
+          <ProductCategory />
         </div>
       </div>
-      <div className="p-4 pb-6">
+      <div className="p-4">
         <CardsGrid products={products.products.slice(0, 20)} />
+      </div>
+      <div className="flex justify-center py-4">
+        <Button>View more</Button>
       </div>
     </div>
   );

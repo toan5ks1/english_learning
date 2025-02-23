@@ -34,7 +34,7 @@ export const navItems: NavItemWithChildren[] = [
   },
 ];
 
-export const CATEGORY: ICategory[] = [
+export const CATEGORIES: ICategory[] = [
   "Upper Body",
   "Lower Body",
   "Hat",
