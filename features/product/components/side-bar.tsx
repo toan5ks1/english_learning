@@ -8,14 +8,12 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
-  SidebarGroupLabel,
 } from "@/components/ui/sidebar";
 import { SearchProduct } from "./filters/search";
 import { FilterBox } from "./filters/filter-box";
 import { THEME, TIER } from "@/lib/const";
-import { useState } from "react";
-import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
+import { PriceSlider } from "./filters/price-slider";
 
 export function SideBar() {
   const searchField = { id: "product_name", label: "Quick search" };
@@ -26,8 +24,6 @@ export function SideBar() {
     searchFields: [searchField],
     filterFields: [tierField, themeField],
   });
-
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
 
   return (
     <Sidebar className="sticky top-0">
@@ -42,20 +38,11 @@ export function SideBar() {
                 onChange={setFilterValues}
               />
               <Label htmlFor="price-range">Prices</Label>
-              <Slider
-                variant="range"
-                defaultValue={[0, 500]}
-                max={500}
-                step={1}
-                value={priceRange}
-                onValueChange={(value: typeof priceRange) =>
-                  setPriceRange(value)
-                }
+              <PriceSlider
+                value={filterValues["price_range"]}
+                filterValues={filterValues}
+                setFilterValues={setFilterValues}
               />
-              <div className="flex justify-between mt-1 text-sm text-muted-foreground">
-                <span>0.01 ETH</span>
-                <span>200 ETH</span>
-              </div>
               <FilterBox
                 key={tierField.id}
                 filterKey={tierField.id}

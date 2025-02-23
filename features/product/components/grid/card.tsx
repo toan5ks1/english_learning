@@ -13,8 +13,6 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const color = getGradientByRarity(product.category);
-  console.log(product.category, color);
   return (
     <Card className="group relative overflow-hidden">
       <figure

@@ -23,7 +23,6 @@ export function SearchProduct({
 
   // Clear input
   useEffect(() => {
-    console.log(value);
     if (!value) {
       setInputValue(value);
     }

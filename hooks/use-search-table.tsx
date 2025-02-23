@@ -20,20 +20,20 @@ export function useSearchTable({
   queryStateOptions = { shallow: false },
 }: UseSearchTableProps) {
   const allFields = React.useMemo(
-    () => [...searchFields, ...(filterFields ?? [])],
+    () => [...searchFields, ...(filterFields ?? []), { id: "price_range" }],
     [searchFields, filterFields]
   );
 
   const filterParsers = React.useMemo(() => {
     return allFields.reduce<Record<string, Parser<string> | Parser<string[]>>>(
       (acc, field) => {
-        if (field.options) {
-          // Faceted filter
+        if (field.id === "price_range") {
+          acc[field.id] = parseAsString.withOptions(queryStateOptions); // Treat as string "min-max"
+        } else if (field.options) {
           acc[field.id] = parseAsArrayOf(parseAsString, ",").withOptions(
             queryStateOptions
           );
         } else {
-          // Search field
           acc[field.id] = parseAsString.withOptions(queryStateOptions);
         }
         return acc;
@@ -42,7 +42,6 @@ export function useSearchTable({
     );
   }, [allFields, queryStateOptions]);
 
-  // Create state for filter values
   const [filterValues, setFilterValues] = useQueryStates(filterParsers);
 
   const isFilterActive = Object.values(filterValues).some(
