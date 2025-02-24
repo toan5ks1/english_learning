@@ -9,27 +9,18 @@ type Field = {
 };
 
 type UseSearchTableProps = {
-  searchFields: Field[];
-  filterFields?: Field[];
+  fields: Field[];
   queryStateOptions?: Record<string, any>;
 };
 
 export function useSearchTable({
-  searchFields,
-  filterFields,
+  fields,
   queryStateOptions = { shallow: false },
 }: UseSearchTableProps) {
-  const allFields = React.useMemo(
-    () => [...searchFields, ...(filterFields ?? []), { id: "price_range" }],
-    [searchFields, filterFields]
-  );
-
   const filterParsers = React.useMemo(() => {
-    return allFields.reduce<Record<string, Parser<string> | Parser<string[]>>>(
+    return fields.reduce<Record<string, Parser<string> | Parser<string[]>>>(
       (acc, field) => {
-        if (field.id === "price_range") {
-          acc[field.id] = parseAsString.withOptions(queryStateOptions); // Treat as string "min-max"
-        } else if (field.options) {
+        if (field.options) {
           acc[field.id] = parseAsArrayOf(parseAsString, ",").withOptions(
             queryStateOptions
           );
@@ -40,7 +31,7 @@ export function useSearchTable({
       },
       {}
     );
-  }, [allFields, queryStateOptions]);
+  }, [fields, queryStateOptions]);
 
   const [filterValues, setFilterValues] = useQueryStates(filterParsers);
 

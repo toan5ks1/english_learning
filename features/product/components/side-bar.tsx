@@ -19,10 +19,10 @@ export function SideBar() {
   const searchField = { id: "product_name", label: "Quick search" };
   const tierField = { id: "tier", label: "Tier", options: TIER };
   const themeField = { id: "theme", label: "Theme", options: THEME };
+  const priceField = { id: "price_range" };
 
   const { filterValues, isFilterActive, setFilterValues } = useSearchTable({
-    searchFields: [searchField],
-    filterFields: [tierField, themeField],
+    fields: [searchField, tierField, themeField, priceField],
   });
 
   return (
