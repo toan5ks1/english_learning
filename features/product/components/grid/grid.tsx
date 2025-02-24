@@ -4,16 +4,20 @@ import { useProducts } from "../../hooks/useProducts";
 import ProductCard from "./card";
 import { IProduct } from "@/db/model";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import Loading from "@/app/(products)/loading";
 
 interface ProductGridProps {
   readonly [x: string]: {};
 }
 
 export function ProductGrid({ searchParams }: ProductGridProps) {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     useProducts(searchParams);
   const products = data?.pages.flatMap((page) => page.products) || [];
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="p-8 space-y-8">

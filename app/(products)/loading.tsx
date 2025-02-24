@@ -1,23 +1,17 @@
-import { Skeleton } from '@/components/ui/skeleton';
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Loading() {
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex-grow overflow-auto min-h-[200px]">
-        <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 p-4">
-          {Array.from({ length: 28 }).map((_, index) => (
-            <div
-              key={index}
-              className="relative aspect-[2/3] w-full overflow-hidden rounded-md"
-            >
-              <Skeleton className="absolute inset-0 bg-gray-200" />
-            </div>
-          ))}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 p-8">
+      {Array.from({ length: 16 }).map((_, index) => (
+        <div key={index} className="flex flex-col space-y-3">
+          <Skeleton className="aspect-square h-auto w-full rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[250px]" />
+            <Skeleton className="h-4 w-[200px]" />
+          </div>
         </div>
-      </div>
-      <div className="mt-auto p-4 border-t">
-        <div className="h-10" />
-      </div>
+      ))}
     </div>
   );
 }
