@@ -14,9 +14,9 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="group overflow-hidden">
+    <Card className="p-4">
       <figure
-        className={`relative rounded-md group-hover:opacity-90 px-4 pt-8 border-b m-4`}
+        className={`relative aspect-square group overflow-hidden rounded-md hover:opacity-90 hover:cursor-pointer pt-8 border-b`}
         style={{ background: getGradientByRarity(product.category) }}
       >
         <HeartIcon className="fill-background text-background size-4 my-0.5 absolute top-3 end-3" />
@@ -24,21 +24,16 @@ export default function ProductCard({ product }: ProductCardProps) {
           {product.category}
         </Badge>
         <Image
-          className="aspect-square w-full"
+          className="w-full transition-all hover:scale-105"
           src={getImageUrlById(product.imageId)}
           width={500}
           height={500}
           alt={product.title}
         />
       </figure>
-      <CardContent className="p-4 space-y-2">
+      <CardContent className="space-y-2 p-0 pt-6">
         <div className="flex justify-between">
-          <h3 className="text-lg font-semibold">
-            <Link href="#">
-              <span aria-hidden="true" className="absolute inset-0" />
-              {product.title}
-            </Link>
-          </h3>
+          <h3 className="text-lg font-semibold">{product.title}</h3>
           <p className="text-lg font-semibold">{product.price}</p>
         </div>
         <div className="flex space-x-2">

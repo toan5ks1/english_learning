@@ -15,11 +15,9 @@ export function ProductGrid({ searchParams }: ProductGridProps) {
     useProducts(searchParams);
   const products = data?.pages.flatMap((page) => page.products) || [];
 
-  console.log(products);
-
   return (
     <div className="p-8 space-y-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
         {!products?.length ? (
           <div className="h-60 flex justify-center items-center col-span-full">
             <p className="text-center text-muted-foreground">
@@ -32,15 +30,15 @@ export function ProductGrid({ searchParams }: ProductGridProps) {
           ))
         )}
       </div>
-      {hasNextPage && (
-        <Button
-          className="flex justify-center py-4 sticky top-0"
-          onClick={() => fetchNextPage()}
-          disabled={isFetchingNextPage}
-        >
-          {isFetchingNextPage ? "Loading..." : "View More"}
-        </Button>
-      )}
+      <div className="flex justify-center pt-16 sm:h-80 h-20">
+        {hasNextPage ? (
+          <Button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
+            {isFetchingNextPage ? "Loading..." : "View More"}
+          </Button>
+        ) : products?.length ? (
+          <p>Đã hết</p>
+        ) : null}
+      </div>
     </div>
   );
 }

@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
     jsonData = jsonData.products.filter((item: any) => {
       if (
         filters.product_name &&
-        !item.product_name
+        !item.title
           .toLowerCase()
           .includes(String(filters.product_name).toLowerCase())
       ) {

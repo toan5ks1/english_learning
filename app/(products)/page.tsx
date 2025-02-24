@@ -20,8 +20,8 @@ export default async function Page(props: PageProps) {
   const cachedSearchParams = productSearchParamsCache.parse(searchParams);
 
   return (
-    <div className="w-full bg-background px-4">
-      <div className="bg-background sticky z-50 top-0 px-8 py-2">
+    <div className="w-full bg-background">
+      <div className="bg-background sticky z-50 top-0 py-2 px-8">
         <div className="h-12 flex items-center">
           <SidebarTrigger
             className="lg:hidden block size-9 px-1 mr-2"
