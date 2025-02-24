@@ -16,11 +16,15 @@ export function ProductGrid({ searchParams }: ProductGridProps) {
   const products = data?.pages.flatMap((page) => page.products) || [];
 
   if (isLoading) {
-    return <Loading />;
+    return (
+      <div className="sm:p-8 p-4">
+        <Loading />
+      </div>
+    );
   }
 
   return (
-    <div className="p-8 space-y-8">
+    <div className="sm:p-8 p-4 space-y-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
         {!products?.length ? (
           <div className="h-60 flex justify-center items-center col-span-full">
