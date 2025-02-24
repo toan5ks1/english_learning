@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 import { SiteHeader } from "@/components/layouts/site-header";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import TanstackProvider from "@/components/providers/tanstack-provider";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "NFT Marketplace — Next.js App Router",
@@ -31,7 +32,9 @@ export default function RootLayout({
             <TanstackProvider>
               <div className="relative flex flex-col">
                 <SiteHeader />
-                <div className="flex-1">{children}</div>
+                <div className="flex-1">
+                  <Suspense>{children}</Suspense>
+                </div>
               </div>
             </TanstackProvider>
             <Toaster closeButton />
