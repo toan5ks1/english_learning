@@ -24,8 +24,14 @@ export async function GET(req: NextRequest) {
         return false;
       }
 
-      if (filters.category && item.category !== filters.category) {
-        return false;
+      if (
+        filters.category &&
+        Array.isArray(filters.category) &&
+        filters.category.length
+      ) {
+        if (!filters.category.includes(item.category)) {
+          return false;
+        }
       }
 
       if (filters.price_range) {
@@ -56,7 +62,6 @@ export async function GET(req: NextRequest) {
       return true;
     });
 
-    console.log(filters);
     const page = Number(filters.page) || 1;
     const limit = Number(filters.limit) || 16;
     const startIndex = (page - 1) * limit;

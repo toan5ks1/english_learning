@@ -12,7 +12,7 @@ export interface ProductSearchParams {
 export const productSearchParamsSchema = {
   ...pagingParamsSchema,
   product_name: { parser: parseAsString, defaultValue: "" },
-  category: { parser: parseAsString, defaultValue: "" },
+  category: { parser: parseAsArrayOf(parseAsString, ","), defaultValue: [] },
   price_range: { parser: parseAsString, defaultValue: "" },
   tier: { parser: parseAsArrayOf(parseAsString, ","), defaultValue: [] },
   theme: { parser: parseAsArrayOf(parseAsString, ","), defaultValue: [] },
