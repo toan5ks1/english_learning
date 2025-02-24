@@ -4,7 +4,7 @@ import { CATEGORIES } from "@/lib/const";
 
 export function ProductCategory() {
   return (
-    <ScrollArea className="whitespace-nowrap lg:w-[calc(100vw-26rem)]">
+    <ScrollArea className="whitespace-nowrap lg:w-[calc(100vw-30rem)]">
       <div className="flex space-x-3">
         {["All", ...CATEGORIES].map((category) => (
           <Toggle

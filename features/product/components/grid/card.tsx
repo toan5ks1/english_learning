@@ -14,18 +14,11 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="group relative overflow-hidden">
+    <Card className="group overflow-hidden">
       <figure
-        className={`group-hover:opacity-90 px-4 pt-8 border-b`}
+        className={`relative rounded-md group-hover:opacity-90 px-4 pt-8 border-b m-4`}
         style={{ background: getGradientByRarity(product.category) }}
       >
-        {/* <Button
-          asChild
-          variant="ghost"
-          size="icon"
-          className="bg-white/70 size-5 p-0.5  rounded-full dark:text-black"
-        >
-        </Button> */}
         <HeartIcon className="fill-background text-background size-4 my-0.5 absolute top-3 end-3" />
         <Badge className="bg-[rgba(49,59,69,0.5)] absolute top-3 start-3 rounded-sm dark:text-black">
           {product.category}

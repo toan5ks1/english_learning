@@ -6,7 +6,7 @@ import { Footer } from "./components/footer";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Heroes />
+      {/* <Heroes /> */}
       <div className="relative">
         <SidebarProvider>
           <SideBar />
