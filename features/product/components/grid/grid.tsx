@@ -2,7 +2,7 @@
 
 import { useProducts } from "../../hooks/useProducts";
 import ProductCard from "./card";
-import { IProduct } from "@/db/model";
+
 import { Button } from "@/components/ui/button";
 import Loading from "@/app/(products)/loading";
 
@@ -38,9 +38,13 @@ export function ProductGrid({ searchParams }: ProductGridProps) {
           ))
         )}
       </div>
-      <div className="flex justify-center pt-16 sm:h-80 h-20">
+      <div className="flex flex-col justify-center">
         {hasNextPage ? (
-          <Button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
+          <Button
+            className="w-fit mx-auto my-16"
+            onClick={() => fetchNextPage()}
+            disabled={isFetchingNextPage}
+          >
             {isFetchingNextPage ? "Loading..." : "View More"}
           </Button>
         ) : products?.length ? (

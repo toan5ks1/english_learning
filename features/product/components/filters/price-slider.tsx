@@ -33,10 +33,14 @@ export function PriceSlider({
   const debouncedPrice = useDebounce(priceRange, 500);
 
   useEffect(() => {
-    setFilterValues((prev) => ({
-      ...prev,
-      price_range: `${debouncedPrice[0]}-${debouncedPrice[1]}`,
-    }));
+    if (
+      JSON.stringify(debouncedPrice) !== JSON.stringify(DEFAULT_PRICE_RANGE)
+    ) {
+      setFilterValues((prev) => ({
+        ...prev,
+        price_range: `${debouncedPrice[0]}-${debouncedPrice[1]}`,
+      }));
+    }
   }, [debouncedPrice, setFilterValues]);
 
   useEffect(() => {

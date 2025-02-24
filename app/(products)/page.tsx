@@ -1,5 +1,5 @@
 import { ProductGrid } from "@/features/product/components/grid/grid";
-import { ITEMS_PER_PAGE } from "@/lib/const";
+import Image from "next/image";
 import { API_URL } from "@/config/site";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ProductCategory } from "@/features/product/components/filters/category";
@@ -32,6 +32,14 @@ export default async function Page(props: PageProps) {
       </div>
 
       <ProductGrid searchParams={cachedSearchParams} />
+      <Image
+        src="/heroes/page-end.svg"
+        alt="Background Image"
+        width={900}
+        height={300}
+        loading="lazy"
+        className="w-full h-auto object-cover object-center"
+      />
     </div>
   );
 }

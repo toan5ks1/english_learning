@@ -31,7 +31,7 @@ export function MainNav({ items }: MainNavProps) {
               href={item.url}
               className={`relative transition-colors ${
                 pathname === item.url
-                  ? "text-pink-500"
+                  ? "bg-gradient-to-r from-[#DA458F] to-[#DA34DD] bg-clip-text text-transparent"
                   : "text-white hover:text-gray-300"
               }`}
               passHref

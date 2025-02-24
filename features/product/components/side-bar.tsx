@@ -26,7 +26,7 @@ export function SideBar() {
   });
 
   return (
-    <Sidebar className="sticky top-0">
+    <Sidebar className="sticky top-0 z-50">
       <SidebarContent className="px-4 py-6">
         <SidebarGroup>
           <SidebarGroupContent>
