@@ -1,15 +1,7 @@
 import { ProductGrid } from "@/features/product/components/grid/grid";
-import Image from "next/image";
-import { API_URL } from "@/config/site";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ProductCategory } from "@/features/product/components/filters/category";
 import { productSearchParamsCache } from "@/features/product/helper";
-
-async function fetchProducts() {
-  const res = await fetch(`${API_URL}/api/products`); // Use absolute URL
-  if (!res.ok) throw new Error("Failed to fetch products");
-  return res.json();
-}
 
 interface PageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -32,14 +24,6 @@ export default async function Page(props: PageProps) {
       </div>
 
       <ProductGrid searchParams={cachedSearchParams} />
-      <Image
-        src="/heroes/page-end.svg"
-        alt="Background Image"
-        width={900}
-        height={300}
-        loading="lazy"
-        className="w-full h-auto object-cover object-center"
-      />
     </div>
   );
 }

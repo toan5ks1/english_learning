@@ -19,17 +19,6 @@ export function getImageUrlById(id: number) {
   return imageUrls[index];
 }
 
-// export const getGradientByRarity = (rarity: string) => {
-//   const gradients: Record<string, string> = {
-//     Epic: "bg-gradient-to-br from-purple-500 to-blue-500",
-//     Legendary: "bg-gradient-to-br from-orange-500 to-yellow-500",
-//     Mythic: "bg-gradient-to-br from-pink-500 to-red-500",
-//     Common: "bg-gradient-to-br from-green-400 to-teal-500",
-//     Rare: "bg-gradient-to-br from-blue-400 to-indigo-500",
-//   };
-
-//   return gradients[rarity] || "bg-gradient-to-br from-gray-500 to-gray-700";
-// };
 export const getGradientByRarity = (category: string) => {
   const gradients: Record<string, string> = {
     "Upper Body": "linear-gradient(to bottom right, #ff9a9e, #fad0c4)", // Soft Pink to Peach

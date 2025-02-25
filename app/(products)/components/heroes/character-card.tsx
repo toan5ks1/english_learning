@@ -1,36 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 interface CharacterCardProps {
   title: string;
   url: string;
 }
-// export default function CharacterCard({ title, url }: CharacterCardProps) {
-//   return (
-//     <Card className="relative w-[300px] bg-[url('/heroes/hero-nft-bg.webp')] p-6 flex flex-col items-center">
-//       {/* Black Shadow Behind Image */}
-//       {/* <div className="absolute top-6 left-6 w-[250px] h-[150px] bg-black" /> */}
-
-//       {/* Image with Floating Effect */}
-//       <div className="relative z-10">
-//         <Image
-//           src={url}
-//           alt={title}
-//           width={250}
-//           height={250}
-//           className="rounded-md"
-//         />
-//       </div>
-
-//       {/* Title */}
-//       <CardContent className="mt-4 text-center font-bold text-black text-lg tracking-wide">
-//         {title}
-//       </CardContent>
-//     </Card>
-//   );
-// }
 
 export default function CharacterCard({ title, url }: CharacterCardProps) {
   return (
