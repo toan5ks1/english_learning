@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="bg-background pt-12 sm:px-[22rem] px-0 pb-32">
+    <footer className="bg-background p-12 pb-32">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-8">
         {/* Navigation */}
         <div>

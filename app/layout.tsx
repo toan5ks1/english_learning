@@ -28,7 +28,7 @@ export default function RootLayout({
         )}
       >
         <NuqsAdapter>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <TanstackProvider>
               <div className="relative flex flex-col">
                 <SiteHeader />
